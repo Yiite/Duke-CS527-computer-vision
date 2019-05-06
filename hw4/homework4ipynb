@@ -1,0 +1,1174 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "T"
+    ]
+   },
+   "source": [
+    "> **Student Names and IDs**:\n",
+    "> \n",
+    "> - Yiteng Lu (2488152)\n",
+    "> - Wenge Xie (2466824)\n",
+    "> - Zengtian deng(2207324)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "# Homework 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "## Part 1: Exam-Style Questions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Suppose that the histogram of orientations $\\theta\\in [0, 180)$ has 18 equal bins, numbered 0 to 17, and with centers $5, 15, \\ldots, 175$. Bilinear voting is used, as described in the class notes on Histograms of Oriented Gradients. Give the fraction of vote that each of the bins receives when a measurement $\\theta = 42$ is observed. Fractions are values in $[0, 1]$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "v_3 = 0.3 \\\\\n",
+    "v_4= 0.7\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "The $x$ and $y$ components of $\\nabla I$ at a particular pixel in an image are $10\\sqrt{3}$ and $10$, respectively. What are the magnitude and orientation of the gradient there? Express orientation in degrees relative to the $x$ axis."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\mu  = 20 \\\\\n",
+    "\\theta = 30 \\,^{\\circ}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "A HOG feature is computed from a $128\\times 64$ window divided into cells with $8\\times 8$ pixels each. The size of a block is $2\\times 2$ cells. Central differences are used to compute gradients. Each cell histogram has nine bins of equal size, and bin 0 is for orientations in $[0, 20)$ degrees.\n",
+    "\n",
+    "Rather than using a constant $\\epsilon$ in the denominator during normalization of a histogram $\\mathbf{v}$, the following procedure is used at all stages to normalize a histogram $\\mathbf{v}$ to $\\mathbf{v}'$:\n",
+    "\n",
+    "$$\n",
+    "\\mathbf{v'} \\;=\\; \\left\\{\\begin{array}{ll} \\frac{\\mathbf{v}}{\\|\\mathbf{v}\\|} &\n",
+    "\\mbox{if $\\|\\mathbf{v}\\| \\neq 0$} \\\\ \\mathbf{v} & \\mbox{otherwise.}\\end{array}\\right.\n",
+    "$$\n",
+    "\n",
+    "The threshold $\\tau$ used to saturate the feature entries during contrast normalization is set to infinity (so that it has no effect).\n",
+    "\n",
+    "For a given window, the pixel at position $(5, 5)$ has value 50, and all other pixels are zero.\n",
+    "\n",
+    "Give an expression for the entries of the HOG feature $\\mathbf{h}$ for that window."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$\\mathbf{h} = \\left[\\frac{1}{\\sqrt{6}}, 0,0,0,\\frac{2}{\\sqrt{6}},0,0,0,\\frac{1}{\\sqrt{6}},0,0....0\\right]$ \n",
+    "<br>\n",
+    "<br>\n",
+    "$\\mathbf{h}$ is a vector contains 3780 entries but everything after the 9th entry are zeros"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "The magnitude of a vector $\\mathbf{x} = [x, y]^T\\in\\mathbb{R}^2$ is\n",
+    "\n",
+    "$$\n",
+    "            f(x, y) = \\sqrt{x^2 + y^2}\\;.\n",
+    "$$\n",
+    "\n",
+    "Write algebraic expressions and exact decimal numerical values of the gradient $\\nabla f$ and Hessian $H_f$ of $f$ at $x=3$ and $y=4$.\n",
+    "\n",
+    "[Hint: $1/5^3 = 1/125 = 8/1000$.]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\nabla f(\\mathbf{x}) = \\frac{\\partial f}{\\partial \\mathbf{x}} =\\left[\\begin{array}{c}\n",
+    "\\frac{x}{\\sqrt{(x^2+y^2)}} \\\\\n",
+    "\\frac{y}{\\sqrt {(x^2+y^2)}} \\end{array} \\right] = \\begin{bmatrix}\n",
+    "    0.6 \\\\\n",
+    "     0.8 \\\\\n",
+    "\\end{bmatrix}\n",
+    "$$\n",
+    "<br>\n",
+    "$$\n",
+    "H_f(\\mathbf{x}) =\n",
+    "\\frac{\\partial^2 f}{\\partial \\mathbf{x} \\partial \\mathbf{x}^T} =\n",
+    "\\left[\\begin{array}{cc}\n",
+    "-(x^2+y^2)^{-\\frac{3}{2}}x^2+(x^2+y^2)^{-\\frac{1}{2}} &\n",
+    "-(x^2+y^2)^{-\\frac{3}{2}}yx \\\\\n",
+    "-(x^2+y^2)^{-\\frac{3}{2}}yx &\n",
+    "-(x^2+y^2)^{-\\frac{3}{2}}y^2+(x^2+y^2)^{-\\frac{1}{2}} \\end{array} \\right]  = \\begin{bmatrix}\n",
+    "    0.128  &-0.096\\\\\n",
+    "     -0.096 & 0.072 \\\\\n",
+    "\\end{bmatrix}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "The second stage of line search repeatedly narrows a bracketing triple $(a, b, c)$ established in the first stage. Suppose that at some point during the second stage the bracketing triple is:\n",
+    "\n",
+    "$$\n",
+    "a = 0 \\;\\;\\;,\\;\\;\\; b = 2 \\;\\;\\;,\\;\\;\\; c = 6\n",
+    "$$\n",
+    "\n",
+    "with function values\n",
+    "\n",
+    "$$\n",
+    "h(a) = 6 \\;\\;\\;,\\;\\;\\; h(b) = 3 \\;\\;\\;,\\;\\;\\; h(c) = 4\n",
+    "$$\n",
+    "\n",
+    "along the search line. Assume further that\n",
+    "\n",
+    "$$\n",
+    "h(1) = 2 \\;\\;\\;\\text{and}\\;\\;\\; h(4) = 5\\;.\n",
+    "$$\n",
+    "\n",
+    "What is the bracketing triple after that? Standard line search is applied, that is, no golden ratio is used. No need to explain.\n",
+    "\n",
+    "[Hint: Draw a sketch.]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer\n",
+    "\n",
+    "$$a = 0 \\;\\;\\;,\\;\\;\\; b = 2 \\;\\;\\;,\\;\\;\\; c = 4$$\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.6"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "The gradient and Hessian at $\\mathbf{z}_0 = [4, 1]^T$ for some function $f\\ :\\ \\mathbb{R}^2 \\rightarrow \\mathbb{R}$ are as follows:\n",
+    "\n",
+    "$$\n",
+    "\\nabla f(\\mathbf{z}_0) \\;=\\; \\left[\\begin{array}{c}2\\\\1 \\end{array}\\right]\n",
+    "\\;\\;\\;\\text{and}\\;\\;\\;\n",
+    "H_f(\\mathbf{z}_0) \\;=\\; \\left[\\begin{array}{c}2 & 1\\\\1 & 3 \\end{array}\\right] \\;.\n",
+    "$$\n",
+    "\n",
+    "Find the point $\\mathbf{z}_1$ that results by taking a single Newton step from $\\mathbf{z}_0$. Show your reasoning briefly."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "set derivatives of $f(\\mathbf{z_k+\\nabla \\mathbf{z}}) = 0$:\n",
+    "$$H_k \\nabla \\mathbf{z} = \\nabla f(\\mathbf{z}_0)$$ \n",
+    "<br>\n",
+    "$$\n",
+    "\\begin{align}\n",
+    "\\nabla \\mathbf{z} &= H_k^{-1}\\nabla f(\\mathbf{z}_0)  \\\\\n",
+    "                  &=\\begin{bmatrix} 2 & 1 \\\\ 1 & 3 \\end{bmatrix}^{-1}\\left[\\begin{array}{c}2\\\\1 \\end{array}\\right] \\\\\n",
+    "                  &=\\begin{bmatrix} 0.6 & -0.2 \\\\ -0.2 & 0.4 \\end{bmatrix} \\left[\\begin{array}{c}2\\\\1 \\end{array}\\right] \\\\\n",
+    "                  &=\\left[\\begin{array}{c} 1\\\\0 \\end{array}\\right] \n",
+    "\\end{align}\n",
+    "$$\n",
+    "$$\n",
+    "\\mathbf{z}_1 = \\mathbf{z}_0 + \\nabla\\mathbf{z} = \\left[\\begin{array}{c}2\\\\1 \\end{array}\\right]  + \\left[\\begin{array}{c} 1\\\\0 \\end{array}\\right]  = \\left[\\begin{array}{c}3\\\\1 \\end{array}\\right]\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.7"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "A classification problem asks to find a classifier $h\\in\\mathcal{H}$ whose domain $X$ and co-domain $Y$ of $h$ are defined as follows:\n",
+    "\n",
+    "$$\n",
+    "X = \\{0, 2, 4, 6, 8, 10\\} \\;\\;\\;\\text{and}\\;\\;\\; Y = \\{0, 1\\}\n",
+    "$$\n",
+    "\n",
+    "and the hypothesis space $\\mathcal{H}$ is the set of the following five functions\n",
+    "\n",
+    "$$\n",
+    "h_k(x) = \\left\\{\\begin{array}{ll}0 & \\mbox{if $x < k$}\\\\\n",
+    "1 & \\mbox{otherwise}\\end{array}\\right.\n",
+    "\\;\\;\\;\\text{for}\\;\\;\\; k = 1, 3, 5, 7, 9\\;.\n",
+    "$$\n",
+    "\n",
+    "The following tiny training set is given:\n",
+    "\n",
+    "$$\n",
+    "T = \\{(0, 0), (2, 0), (4, 1), (6, 1) \\} \\;.\n",
+    "$$\n",
+    "\n",
+    "Make a table of the training risk $L_T(h_k)$ for $k = 1, 3, 5, 7, 9$.  Express values in percent. Then use the table to determine the optimal classifier $\\hat{h}$ for this training set (thus, we only care about empirical risk here)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "T"
+    ]
+   },
+   "source": [
+    "$$\n",
+    "\\begin{array}{r|ccccc}\n",
+    "k & 1 & 3 & 5 & 7 & 9 \\\\\\hline\n",
+    "L_T(h_k) & 25  & 0  & 25  & 50  & 50  \n",
+    "\\end{array}\n",
+    "$$\n",
+    "\n",
+    "The optimal classifier on $T$ is $\\hat{k} = 3 $."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 1.8"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Assume that the probability model $p(x, y)$ for the data in Problem 1.7 is as specified in the table below. The table contains the joint probability $p(x, y)$ with values expressed in percent, rather than as numbers in $[0, 1]$. It has one column per value of $x$ and one row per value of $y$.\n",
+    "\n",
+    "$$\n",
+    "\\begin{array}{c|ccccccc}\n",
+    " & 0 & 2 & 4 & 6 & 8 & 10 \\\\\\hline\n",
+    "0 & 12 & 11 & 10 & 7 & 6 & 4 \\\\\n",
+    "1 & 2 & 4 & 6 & 10 & 12 & 16\n",
+    "\\end{array}\n",
+    "$$\n",
+    "\n",
+    "Under the same circumstances as in Problem 1.7, and with the probability model above, make a table of the statistical risk $L_p(h)$ and determine the classifier that generalizes best. Express values in percent."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "T"
+    ]
+   },
+   "source": [
+    "(Remove this line and complete the expressions below).\n",
+    "\n",
+    "$$\n",
+    "\\begin{array}{r|ccccc}\n",
+    "k & 1 & 3 & 5 & 7 & 9 \\\\\\hline\n",
+    "L_p(h_k) & 40 & 33 & 29  &  32  & 38  \n",
+    "\\end{array}\n",
+    "$$\n",
+    "\n",
+    "The classifier that generalizes best is $\\hat{k} = 5$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "## Part 2: Projections"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 2.1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "What is the shape (number of rows and columns) of $U$? Explain briefly."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The shape of $U$ is $m \\times (m - dim(u))$. First, since $\\mathcal{O}(u)$ and $\\mathbf{u}$ are corthogoanl complement to each other, then $dim(u) + dim(\\mathcal{O}(u)) = m$, so $dim(\\mathcal{O}(u)) = m - dim(u)$. The columns in $U$ can span the space $\\mathcal{O}(u)$, so the number of the columns in $U$ is the same as $dim(\\mathcal{O}(u))$, which means the matrix $U$ has $ m - dim(u)$ columns. Second, since the projection $\\mathbf{p}$ is still in the space $\\mathbb{R}^m$, and $\\mathbf{p}$ is the linear combination of all the column vectors in $U$, then all the column vectors in $U$ are also in the space $\\mathbb{R}^m$, which means each of them has $m$ elements. So, the matrix $U$ has $m$ rows."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 2.2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Explain clearly how, given $\\mathbf{u}$, you can use the Singular Value Decomposition (SVD) to compute a matrix whose columns form an orthonormal basis for $\\mathcal{O}(\\mathbf{u})$. Also explain why.\n",
+    "\n",
+    "Then show a basis for $\\mathcal{O}([1, 1, 0]^T)$ using your technique.\n",
+    "\n",
+    "Give the projection matrix $P$ for this space, and the projection of the vector $\\mathbf{b} = [0, 2, -4]^T$ onto $\\mathcal{O}([1, 1, 0]^T)$.\n",
+    "\n",
+    "Use whatever code you'd like, but do **not** submit your code. Give your numerical results either exactly (if you can guess what they are) or with four decimal digits after the period.\n",
+    "\n",
+    "Do **not** use any other techniques, such as Gram-Schmidt."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "By the property of SVD, we have:\n",
+    "$$\n",
+    "A = U\\Sigma V^T,\\mathrm{where}\\  A \\in \\mathbb{R}^{m\\times n}, U \\in \\mathbb{R}^{m \\times m}, \\Sigma \\in \\mathbb{R}^{m\\times n}, V \\in \\mathbb{R}^{n \\times n}\n",
+    "$$\n",
+    "So, if we do SVD on the given vector $\\mathbf{u}$, we have:\n",
+    "$$\n",
+    "\\begin{split}\n",
+    "\\mathbf{u} &= U_{u}\\Sigma_u V^T_{u}, \\mathrm{where}\\ u \\in \\mathbb{R}^{m\\times 1} , U_u \\in \\mathbb{R}^{m \\times m}, \\Sigma_u \\in \\mathbb{R}^{m\\times 1}, V_u \\in \\mathbb{R}^{1 \\times 1}\\\\\n",
+    "\\end{split}\n",
+    "$$\n",
+    "So,\n",
+    "$$\n",
+    "\\mathbf{u} = [\\mathbf{u_1}, \\mathbf{u_2},\\cdots, \\mathbf{u_m}]\\begin{bmatrix}\\sigma_1\\\\ 0\\\\ \\vdots \\\\ 0\\end{bmatrix}[1] = \\sigma_1\\mathbf{u_1}\n",
+    "$$\n",
+    "From the form of SVD, we can see that the vectors {$\\mathbf{u_2},\\cdots, \\mathbf{u_m}$} are all orthogonal to $\\mathbf{u_1}$, and they are orthonormal to each other. So, we can use them to span a space which is orthogonal to $\\mathbf{u_1}$. Since $\\mathbf{u}= \\sigma\\mathbf{u_1}$, the space we spanned by {$\\mathbf{u_2},\\cdots, \\mathbf{u_m}$} is also orthogonal to $\\mathbf{u}$, which means, we can build a matrix $\\begin{bmatrix}\\mathbf{u_2} &\\cdots &\\mathbf{u_m}\\end{bmatrix}$  whose columns form an orthonormal basis for $\\mathcal{O}(\\mathbf{u})$.\n",
+    "<br>\n",
+    "<br>\n",
+    "For $\\mathbf{u} = [1, 1, 0]^T$, first, compute its SVD decomposition:\n",
+    "$$\n",
+    "\\mathbf{u} = \\begin{bmatrix}0.7071 &-0.7071 &0 \\\\ 0.7071 &0.7071 &0\\\\ 0 &0 &1\\end{bmatrix}\\begin{bmatrix} 1.4142 \\\\ 0\\\\0 \\end{bmatrix}[1]\n",
+    "$$\n",
+    "So, the basis for  $\\mathcal{O}(\\mathbf{u})$ is $$\\begin{Bmatrix}\\begin{bmatrix}-0.7071 \\\\ 0.7071 \\\\ 0\\end{bmatrix},\\begin{bmatrix}0 \\\\ 0 \\\\ 1\\end{bmatrix}\\end{Bmatrix}$$\n",
+    "\n",
+    "The matrix $U$ whose columns form the orthonormal basis of $\\mathcal{O}(\\mathbf{u})$ is then\n",
+    "$$\n",
+    "\\; \\left[\\begin{array}{c}-0.7071 & 0\\\\0.7071 & 0 \\\\0 & 1 \\end{array}\\right] \\;.\n",
+    "$$\n",
+    "\n",
+    "\n",
+    "The projection matrix $P$ for this space is then $UU^T$, which is\n",
+    "$$\n",
+    "\\; \\left[\\begin{array}{c}0.5 & -0.5 & 0\\\\-0.5 & 0.5 & 0 \\\\0 & 0 & 1 \\end{array}\\right] \\;.\n",
+    "$$\n",
+    "\n",
+    "The projection of the vector $b$ onto $\\mathcal{O}([1, 1, 0]^T)$ is then $P\\mathbf{b}$, which is\n",
+    "$$\n",
+    "\\; \\left[\\begin{array}{c}-1\\\\1 \\\\-4 \\end{array}\\right] \\;.\n",
+    "$$\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 2.3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "For each of the two matrices $U$ and $P$ and the vector $\\mathbf{p}$ you found in the previous problem, state whether the object is unique, and explain briefly why or why not."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$U$ is not unique, but $P$ and $\\mathbf{p}$ are unique. The reason why $U$ is not unique is because we can flip the vectors in the matrix $\\begin{bmatrix}u_1 &u_2 &\\cdots &u_m\\end{bmatrix}$ of the SVD and make them point to the opposite direction. This operation will maintain a valid SVD decompositon if we flip the direction of the corresponding vectors in the matrix $\\begin{bmatrix}v_1^T &v_2^T &\\cdots &v_n^T\\end{bmatrix}^T$. Since the matrix $U$ is built by combining the vectors ${u_2,\\cdots,u_m}$ together as the columns of $U$, the matrix $U$ will be changed if we flipped the vectors ${u_2,\\cdots,u_m}$. So, it is not unique. However, no matter which vectors we chose to be flipped, the $P$ matrix will stay the same. Denote $U$ as $\\begin{bmatrix}u_2,\\cdots,u_n\\end{bmatrix}$, then $UU^T = u_2u_2^T + \\cdots u_mu_m^T$. No matter which vectors we chose to be pointing at the opposite direction of itself, $UU^T$ will remain $ u_2u_2^T + \\cdots u_mu_m^T$ (The minus sign will be canceled out). So, matrix $P$ will remain the same, which means it is unique. Since $\\mathbf{p} = P\\mathbf{b}$, the vector $\\mathbf{p}$ will remain unique if we choose an unique vector $\\mathbf{b}$, because $P$ is an unique matrix."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 2.4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Compute the matrix $$Q = I - \\mathbf{n}\\mathbf{n}^T$$ for the example given in Problem 2.2.\n",
+    "\n",
+    "Show $Q$ if it is different from the matrix $P$ you obtained through SVD. Otherwise, just state that the two matrices are the same."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer\n",
+    "The two matrices are the same."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "## Part 3: Optimization and the SVD"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "from scipy.optimize import minimize_scalar\n",
+    "\n",
+    "def normalize(v):\n",
+    "    n = np.linalg.norm(v)\n",
+    "    if n > 0:\n",
+    "        v = v / n\n",
+    "    return v, n\n",
+    "\n",
+    "# sphere_search returns a new point z1, not a search step size\n",
+    "def sphere_step(f, g, z0, epsilon=1.e-6, args=()):\n",
+    "    assert epsilon > 0 and epsilon < 1, 'epsilon must be in (0, 1)'\n",
+    "    assert z0.size > 1, 'sphere must be at least 2-dimensional'\n",
+    "    \n",
+    "    n0, delta = 0, 0\n",
+    "    while n0 < epsilon:\n",
+    "        z0 += delta * np.sqrt(epsilon) * np.random.random(z0.shape)\n",
+    "        z0, _ = normalize(z0)\n",
+    "        p0 = -g(z0, *args)  # Starting direction\n",
+    "        # Project p0 onto the tangent hyperplane to the sphere at z0 and normalize\n",
+    "        s0, n0 = normalize(p0 - np.dot(z0, p0) * z0)\n",
+    "        delta = 1\n",
+    "    \n",
+    "    def h(theta, args):\n",
+    "        return f(z0 * np.cos(theta) + s0 * np.sin(theta), args)\n",
+    "    \n",
+    "    res = minimize_scalar(h, bracket=(0, 1), args=args)\n",
+    "    theta = res.x\n",
+    "    return z0 * np.cos(theta) + s0 * np.sin(theta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 3.1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Write a function with the following header and `assert` statements:\n",
+    "\n",
+    "    def first(A, epsilon=1.e-6, maxiter=10):\n",
+    "        assert A.size > 0, 'array cannot be empty'\n",
+    "        assert np.max(np.abs(A)) >= epsilon, 'array cannot be zero'\n",
+    "\n",
+    "that uses `sphere_step` iteratively to return the tuple `u, sigma, v` of the first left singular vector, first singular value, and first right singular vector of `A`.\n",
+    "\n",
+    "Show your code and the results of running the given tests. You may want to compare your results with those obtained with an off-the-shelf implementation of the SVD. However, do **not** submit your comparison, and do not use SVDs anywhere in your code."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "def first(A, epsilon=1.e-6, maxiter=10):\n",
+    "    assert A.size > 0, 'array cannot be empty'\n",
+    "    assert np.max(np.abs(A)) >= epsilon, 'array cannot be zero'\n",
+    "    if A.shape[1]  == 1:\n",
+    "        v  = np.array([1])\n",
+    "        sigma =  np.linalg.norm(np.dot(A,v))\n",
+    "        u = np.dot(A,v)/sigma \n",
+    "        return u,sigma , v\n",
+    "    if A.shape[0]  == 1:\n",
+    "        u  = np.array([1])\n",
+    "        sigma =  np.linalg.norm(A)\n",
+    "        v = A/sigma\n",
+    "        return u,sigma , v[0]\n",
+    "    def f(u, A):\n",
+    "        return (-u.T@A.T@A@u)\n",
+    "    def g(u,A):\n",
+    "        c = A.shape[1]\n",
+    "        r = A.shape[0]\n",
+    "        gradient = []\n",
+    "        for i in range(c):\n",
+    "            temp = np.zeros((c,1))\n",
+    "            for j in range(c):\n",
+    "                temp[j] = np.dot(A[:,i].T,A[:,j])\n",
+    "            gradient.append(-((np.dot(u,temp)+np.dot(A[:,i].T, np.dot(A,u))))[0])  \n",
+    "        return np.asarray(gradient)\n",
+    "\n",
+    "   \n",
+    "    v_k = np.ones(A.shape[1])\n",
+    "    v_k_1 = np.zeros(A.shape[1])\n",
+    "    T = 0\n",
+    "    while np.linalg.norm(v_k) - np.linalg.norm(v_k_1) > epsilon and T < maxiter:\n",
+    "        if T > 0:\n",
+    "            v_k_1 = v_k\n",
+    "        v_k = sphere_step(f, g, v_k, epsilon=epsilon, args=(A,))\n",
+    "        T +=1     \n",
+    "    sigma = np.linalg.norm(np.dot(A,v_k))\n",
+    "    u = np.dot(A,v_k)/sigma \n",
+    "    return u,sigma , v_k"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "========== testing first ==========\n",
+      "A\n",
+      "[[ 1.2247  1.2247]\n",
+      " [-2.1213  2.1213]\n",
+      " [ 0.7071  0.7071]]\n",
+      "\n",
+      "u\n",
+      "[-0. -1. -0.]\n",
+      "\n",
+      "sigma\n",
+      "2.999999999999999\n",
+      "\n",
+      "v\n",
+      "[ 0.7071 -0.7071]\n",
+      "\n",
+      "========== testing first ==========\n",
+      "A\n",
+      "[[ 2.  0. -1.  3.]\n",
+      " [ 4.  0. -2.  6.]\n",
+      " [ 6.  0. -3.  9.]]\n",
+      "\n",
+      "u\n",
+      "[0.2673 0.5345 0.8018]\n",
+      "\n",
+      "sigma\n",
+      "14.000000000000002\n",
+      "\n",
+      "v\n",
+      "[ 0.5345 -0.     -0.2673  0.8018]\n",
+      "\n",
+      "========== testing first ==========\n",
+      "A\n",
+      "[[3.]\n",
+      " [0.]\n",
+      " [4.]]\n",
+      "\n",
+      "u\n",
+      "[0.6 0.  0.8]\n",
+      "\n",
+      "sigma\n",
+      "5.0\n",
+      "\n",
+      "v\n",
+      "[1]\n",
+      "\n",
+      "========== testing first ==========\n",
+      "A\n",
+      "[[ 4. -3.]]\n",
+      "\n",
+      "u\n",
+      "[1]\n",
+      "\n",
+      "sigma\n",
+      "5.0\n",
+      "\n",
+      "v\n",
+      "[ 0.8 -0.6]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "def test(f, A_list):\n",
+    "    def printArray(name, A):\n",
+    "        print(name, A, sep='\\n', end='\\n\\n')\n",
+    "        \n",
+    "    if f.__name__ is 'first':\n",
+    "        un, sn, vn = 'u', 'sigma', 'v'\n",
+    "        product = False\n",
+    "    else:\n",
+    "        un, sn, vn = 'U', 'Sigma', 'V'\n",
+    "        product = True\n",
+    "\n",
+    "    np.set_printoptions(precision=4, suppress=True)\n",
+    "    \n",
+    "    for A in A_list:\n",
+    "        U, Sigma, V = f(A)\n",
+    "        print('=' * 10, 'testing', f.__name__, '=' * 10)\n",
+    "        printArray('A', A)\n",
+    "        if product:\n",
+    "            printArray(\"U * Sigma * V'\", np.dot(U, np.dot(Sigma, V.T)))\n",
+    "        printArray(un, U)\n",
+    "        printArray(sn, Sigma)\n",
+    "        printArray(vn, V)\n",
+    "            \n",
+    "s3 = np.sqrt(3)\n",
+    "A_list = (np.array([[s3, s3], [-3., 3.], [1., 1.]]) / np.sqrt(2.),\n",
+    "          np.outer([1., 2., 3.], [2., 0., -1., 3.]),\n",
+    "          np.array([[3.], [0.], [4.]]), np.array([[4., -3.]]))\n",
+    "\n",
+    "# try:\n",
+    "test(first, A_list)\n",
+    "# except NameError:\n",
+    "#     pass"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "### Problem 3.2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "HST"
+    ]
+   },
+   "source": [
+    "Use your function `first` to write a function with the following header and `assert` statement that computes the \"tiny\" SVD of a non-empty matrix $A$, with the given specifications:\n",
+    "\n",
+    "    def SVD(A, epsilon=1.e-3, maxiter=10):\n",
+    "        assert A.size > 0, 'array cannot be empty'\n",
+    "        \n",
+    "The function should return the tuple `U, Sigma, V` of the matrices in the \"tiny\" SVD of `A`, and should comply with the programming notes.\n",
+    "        \n",
+    "Show your code and the results of running the given tests. You may want to compare your results with those obtained with an off-the-shelf implementation of the SVD. However, do **not** submit your comparison. Do not use library SVDs anywhere in your code."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "source": [
+    "### Answer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {
+    "tags": [
+     "T"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "from numpy.linalg import matrix_rank\n",
+    "def SVD(A, epsilon=1.e-3, maxiter=10):\n",
+    "    m = A.shape[0]\n",
+    "    n = A.shape[1]\n",
+    "    r = matrix_rank(A)\n",
+    "    U = np.zeros((m,r))\n",
+    "    Sigma= np.zeros((r,r))\n",
+    "    V= np.zeros((n,r))\n",
+    "    assert A.size > 0, 'array cannot be empty'\n",
+    "    i = 0\n",
+    "    while np.max(np.abs(A)) > epsilon:\n",
+    "        u,sigma,v = first(A, epsilon=1.e-6, maxiter=maxiter)\n",
+    "        U[:,i] = u\n",
+    "        Sigma[i,i]=sigma\n",
+    "        V.T[i] = v\n",
+    "        v = np.reshape(v,(len(v),1))\n",
+    "        A = A-((A@v)@v.T) \n",
+    "        i+=1\n",
+    "    return U,Sigma,V"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "tags": [
+     "ST"
+    ]
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "========== testing SVD ==========\n",
+      "A\n",
+      "[[ 1.2247  1.2247]\n",
+      " [-2.1213  2.1213]\n",
+      " [ 0.7071  0.7071]]\n",
+      "\n",
+      "U * Sigma * V'\n",
+      "[[ 1.2247  1.2247]\n",
+      " [-2.1213  2.1213]\n",
+      " [ 0.7071  0.7071]]\n",
+      "\n",
+      "U\n",
+      "[[-0.     0.866]\n",
+      " [ 1.     0.   ]\n",
+      " [-0.     0.5  ]]\n",
+      "\n",
+      "Sigma\n",
+      "[[3. 0.]\n",
+      " [0. 2.]]\n",
+      "\n",
+      "V\n",
+      "[[-0.7071  0.7071]\n",
+      " [ 0.7071  0.7071]]\n",
+      "\n",
+      "========== testing SVD ==========\n",
+      "A\n",
+      "[[ 2.  0. -1.  3.]\n",
+      " [ 4.  0. -2.  6.]\n",
+      " [ 6.  0. -3.  9.]]\n",
+      "\n",
+      "U * Sigma * V'\n",
+      "[[ 2.  0. -1.  3.]\n",
+      " [ 4.  0. -2.  6.]\n",
+      " [ 6.  0. -3.  9.]]\n",
+      "\n",
+      "U\n",
+      "[[0.2673]\n",
+      " [0.5345]\n",
+      " [0.8018]]\n",
+      "\n",
+      "Sigma\n",
+      "[[14.]]\n",
+      "\n",
+      "V\n",
+      "[[ 0.5345]\n",
+      " [ 0.    ]\n",
+      " [-0.2673]\n",
+      " [ 0.8018]]\n",
+      "\n",
+      "========== testing SVD ==========\n",
+      "A\n",
+      "[[3.]\n",
+      " [0.]\n",
+      " [4.]]\n",
+      "\n",
+      "U * Sigma * V'\n",
+      "[[3.]\n",
+      " [0.]\n",
+      " [4.]]\n",
+      "\n",
+      "U\n",
+      "[[0.6]\n",
+      " [0. ]\n",
+      " [0.8]]\n",
+      "\n",
+      "Sigma\n",
+      "[[5.]]\n",
+      "\n",
+      "V\n",
+      "[[1.]]\n",
+      "\n",
+      "========== testing SVD ==========\n",
+      "A\n",
+      "[[ 4. -3.]]\n",
+      "\n",
+      "U * Sigma * V'\n",
+      "[[ 4. -3.]]\n",
+      "\n",
+      "U\n",
+      "[[1.]]\n",
+      "\n",
+      "Sigma\n",
+      "[[5.]]\n",
+      "\n",
+      "V\n",
+      "[[ 0.8]\n",
+      " [-0.6]]\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "s3 = np.sqrt(3)\n",
+    "A_list = (np.array([[s3, s3], [-3., 3.], [1., 1.]]) / np.sqrt(2.),\n",
+    "          np.outer([1., 2., 3.], [2., 0., -1., 3.]),\n",
+    "          np.array([[3.], [0.], [4.]]), np.array([[4., -3.]]))\n",
+    "\n",
+    "try:\n",
+    "    test(SVD, A_list)\n",
+    "except NameError:\n",
+    "    pass"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
